@@ -1,10 +1,6 @@
-const formulario = document.querySelector('#formulario');
+import App from './classes/App.js'
+
+const app = new App();
 
 
-loadAddEventListeners();
-
-// Carga addEventListeners
-function loadAddEventListeners(){
-    formulario.addEventListener('submit', () => agregarToDo)
-}   
 
