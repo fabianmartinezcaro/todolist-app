@@ -10,27 +10,44 @@
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="contenedor-todos" class="contenedor-todos">
         <!-- Lista de todos -->
         <div class="lista-todos">
-            <h1>To do's</h1>
+            <h1>Tareas</h1>
             <div id="todos">
+                <!-- DIV DE TESTEO (DIV DE SCRIPTING) -->
                 <div class="test">
                     <input id="checkbox" type="checkbox">
                     <p>Ordenar habitación</p>
+                    <div class="timing">
+                        <p>Hora de inicio: 20:30</p>
+                        <p>Hora de termino: 21:30</p>
+                    </div>
                     <a href="#">Eliminar</a>
                 </div>
             </div>
 
         </div>
         <!-- Formulario para los todos -->
-        <form id="formulario" class="formulario" action="submit">
-            <input type="text">
-            <button>Crear Tarea</button>
-        </form>
+        <div id="container-form-stats">
+            <form id="formulario" class="formulario">
+                <div>
+                    <p>Crea una tarea:</p>
+                    <input id="todo" name="todo" type="text">
+                    <div id="tiempo-todo">
+                        <p>Hora inicio:</p>
+                        <input id="horaInicio" name="horaInicio" type="time">
+                        <p>Hora fin:</p>
+                        <input id="horaTermino" name="horaTermino" type="time">
+                    </div>
+                    <button action="submit">Crear Tarea</button>
+                </div>
+                
+            </form>
+        </div>
     </div>
     <script src="/js/app.js" type="module"></script>
 </body>
