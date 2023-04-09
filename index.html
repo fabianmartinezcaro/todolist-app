@@ -21,10 +21,13 @@
                 <!-- DIV DE TESTEO (DIV DE SCRIPTING) -->
                 <div class="test">
                     <input id="checkbox" type="checkbox">
-                    <p>Ordenar habitación</p>
-                    <div class="timing">
-                        <p>Hora de inicio: 20:30</p>
-                        <p>Hora de termino: 21:30</p>
+                    <div class="info-tarea">
+                        <p>Ordenar</p>
+                        <div class="timing">
+                            <p>Inicio: 20:30</p>
+                            <p> / </p>
+                            <p>Termino: 21:30</p>
+                        </div>
                     </div>
                     <a href="#">Eliminar</a>
                 </div>
@@ -38,10 +41,14 @@
                     <p>Crea una tarea:</p>
                     <input id="todo" name="todo" type="text">
                     <div id="tiempo-todo">
-                        <p>Hora inicio:</p>
-                        <input id="horaInicio" name="horaInicio" type="time">
-                        <p>Hora fin:</p>
-                        <input id="horaTermino" name="horaTermino" type="time">
+                        <div>
+                            <p>Hora inicio:</p>
+                            <input id="horaInicio" name="horaInicio" type="time">
+                        </div>
+                        <div>
+                            <p>Hora fin:</p>
+                            <input id="horaTermino" name="horaTermino" type="time">
+                        </div>
                     </div>
                     <button action="submit">Crear Tarea</button>
                 </div>

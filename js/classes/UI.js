@@ -1,17 +1,62 @@
+import { contenedorToDos } from "../selectores.js";
+import {DB} from "../funciones.js";
+
 export default class UI{
+
+    mostrarToDo(){
+        this.limpiarHTML()
+
+        const objectStore = DB.transaction('todos').objectStore('todos');
+
+        objectStore.openCursor().onsuccess = function (event){
+
+            const cursor = event.target.result;
+
+            if(cursor){
+
+                const {tarea, horaInicio, horaTermino} = cursor.value;
+                
+
+
+            }
+
+        }
+
+
+    }
 
     mostrarAlerta(contenedor, mensaje, alerta){
 
+        const divAlerta = document.createElement('DIV');
+        let condicionCumplida = false;
+
         if(alerta === 'error'){
-            const divAlerta = document.createElement('DIV');
-            div.classList.add('error');
-            div.textContent = mensaje;
+            divAlerta.classList.add('error');
+            divAlerta.textContent = mensaje;
+
+            contenedor.appendChild(divAlerta);
+            condicionCumplida = true;
+
         }else{
-            const divAlerta = document.createElement('DIV');
-            div.classList.add('correcto');
-            div.textContent = mensaje;
+            divAlerta.classList.add('correcto');
+            divAlerta.textContent = mensaje;
+
+            contenedor.appendChild(divAlerta);
+            condicionCumplida = true;
+        }
+
+        if(condicionCumplida){
+            setTimeout(() => {
+                divAlerta.remove();
+            }, 3000);
         }
 
     }   
+
+    limpiarHTML(){
+        while(contenedorToDos.firstChild){
+            contenedorToDos.removeChild(contenedorToDos.firstChild);
+        }
+    }
 
 }

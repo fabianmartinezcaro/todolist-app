@@ -1,5 +1,5 @@
-import {agregarToDo, verificarTarea} from '../funciones.js'
-import { inputToDo } from '../selectores.js'
+import {agregarToDo, crearDB, verificarDatos} from '../funciones.js'
+import { inputToDo, inputHoraInicio, inputHoraTermino } from '../selectores.js'
 
 export default class App{
 
@@ -8,10 +8,12 @@ export default class App{
     }
 
     startApp(){
-        inputToDo.addEventListener('input', verificarTarea)
-    
-        
-        formulario.addEventListener('submit', () => agregarToDo) 
+        inputToDo.addEventListener('input', verificarDatos);
+        inputHoraInicio.addEventListener('input', verificarDatos);
+        inputHoraTermino.addEventListener('input', verificarDatos);
+
+        document.addEventListener('DOMContentLoaded', crearDB)
+        formulario.addEventListener('submit', agregarToDo);
     }
 
 
