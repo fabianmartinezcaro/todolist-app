@@ -17,21 +17,19 @@
         <!-- Lista de todos -->
         <div class="lista-todos">
             <h1>Tareas</h1>
-            <div id="todos">
-                <!-- DIV DE TESTEO (DIV DE SCRIPTING) -->
-                <div class="test">
-                    <input id="checkbox" type="checkbox">
-                    <div class="info-tarea">
-                        <p>Ordenar</p>
-                        <div class="timing">
-                            <p>Inicio: 20:30</p>
-                            <p> / </p>
-                            <p>Termino: 21:30</p>
+            <ul>
+                <li id="todo">
+                    <input type="checkbox" id="todo-check">
+                    <div class="info-todo">
+                        <p id="nombreToDo">Estudiar</p>
+                        <div class="info-todo-tiempo">
+                            <p>Inicio: 10:00</p>
+                            <p>Termino: 11:30</p>
                         </div>
                     </div>
-                    <a href="#">Eliminar</a>
-                </div>
-            </div>
+                    <a id="todo-delete" href="#">Eliminar</a>
+                </li>
+            </ul>
 
         </div>
         <!-- Formulario para los todos -->
@@ -39,7 +37,7 @@
             <form id="formulario" class="formulario">
                 <div>
                     <p>Crea una tarea:</p>
-                    <input id="todo" name="todo" type="text">
+                    <input id="todo-input" name="todo" type="text">
                     <div id="tiempo-todo">
                         <div>
                             <p>Hora inicio:</p>

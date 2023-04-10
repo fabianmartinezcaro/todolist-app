@@ -17,7 +17,6 @@ const objetoTarea = {
 
 export function verificarDatos(evento){
     objetoTarea[evento.target.name] = evento.target.value;
-    console.log(evento.target.value)
 }
 
 export function agregarToDo(evento){
@@ -41,6 +40,14 @@ export function agregarToDo(evento){
 export function eliminarToDo(){
 }
 
+function reiniciarObjeto(){
+
+    objetoTarea.todo = '';
+    objetoTarea.horaInicio = '';
+    objetoTarea.horaTermino = '';
+    
+}
+
 export function crearDB(){
     const todoDB = window.indexedDB.open('todoDB', 1);
 
@@ -52,6 +59,8 @@ export function crearDB(){
         console.log('Base de datos creada correctamente!')
         DB = todoDB.result;
         console.log(DB);
+
+        ui.mostrarToDo();
     }
 
     todoDB.onupgradeneeded = function (event) {
@@ -65,6 +74,7 @@ export function crearDB(){
         objectStore.createIndex('todo', 'todo', {unique: false})
         objectStore.createIndex('horaInicio', 'horaInicio', {unique: false})
         objectStore.createIndex('horaTermino', 'horaTermino', {unique: false})
+        objectStore.createIndex('id', 'id', {unique: true})
 
         console.log('DB y campos creados correctamente!')
 

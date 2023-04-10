@@ -14,8 +14,24 @@ export default class UI{
 
             if(cursor){
 
-                const {tarea, horaInicio, horaTermino} = cursor.value;
+                const {tarea, horaInicio, horaTermino, id} = cursor.value;
                 
+                const divToDo = document.createElement('DIV');
+                divToDo.classList.add('test');
+                divToDo.dataset.id = id;
+
+                const inputCheckBox = document.createElement('INPUT');
+                inputCheckBox.type = 'checkbox';
+                inputCheckBox.classList.add('test', 'input')
+
+                const nombreToDo = document.createElement('')
+
+                const infoHoraInicio = document.createElement('DIV');
+                infoHoraInicio.classList.add('timing', 'p');
+                infoHoraInicio.textContent = horaInicio;
+
+                const infoHoraTermino = document.createElement('DIV');
+                infoHoraTermino.classList.add('timing', 'p');
 
 
             }
