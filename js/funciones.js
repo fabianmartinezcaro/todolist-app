@@ -21,20 +21,21 @@ export function verificarDatos(evento){
 
 export function agregarToDo(evento){
     evento.preventDefault();
+    console.log('Se ha llamado')
 
     const {todo, horaInicio, horaTermino} = objetoTarea;
 
     if(todo === '' || horaInicio === '' || horaTermino === ''){
         ui.mostrarAlerta(formulario, 'Por favor, indique una tarea.', 'error');
         return;
-    }else{
-        objetoTarea.id = Date.now();
-        tarea.nuevoToDo({...objetoTarea});
-
-
-        ui.mostrarToDo();
-        ui.mostrarAlerta(formulario, 'Se ha agregado una tarea!', 'correcto');
     }
+
+    objetoTarea.id = Date.now();
+    tarea.nuevoToDo({...objetoTarea});
+
+    ui.mostrarToDo();
+    console.log('se ha guardado')
+    ui.mostrarAlerta(formulario, 'Se ha agregado una tarea!', 'correcto');
 }
 
 export function eliminarToDo(){

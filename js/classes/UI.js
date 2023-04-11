@@ -1,10 +1,10 @@
-import { contenedorToDos } from "../selectores.js";
+import { contenedorToDos, listadoCardsToDo } from "../selectores.js";
 import {DB} from "../funciones.js";
 
 export default class UI{
 
     mostrarToDo(){
-        this.limpiarHTML()
+        // this.limpiarHTML()
 
         const objectStore = DB.transaction('todos').objectStore('todos');
 
@@ -15,24 +15,20 @@ export default class UI{
             if(cursor){
 
                 const {tarea, horaInicio, horaTermino, id} = cursor.value;
+                console.log(tarea)
+                console.log('aun no veo nada')
                 
-                const divToDo = document.createElement('DIV');
-                divToDo.classList.add('test');
+                const divToDo = document.createElement('LI');
+                divToDo.classList.add('#todo');
                 divToDo.dataset.id = id;
 
-                const inputCheckBox = document.createElement('INPUT');
-                inputCheckBox.type = 'checkbox';
-                inputCheckBox.classList.add('test', 'input')
+                const parrafoNombreToDo = document.createElement('P');
+                parrafoNombreToDo.textContent = tarea;
+                divToDo.appendChild(parrafoNombreToDo)
 
-                const nombreToDo = document.createElement('')
-
-                const infoHoraInicio = document.createElement('DIV');
-                infoHoraInicio.classList.add('timing', 'p');
-                infoHoraInicio.textContent = horaInicio;
-
-                const infoHoraTermino = document.createElement('DIV');
-                infoHoraTermino.classList.add('timing', 'p');
-
+                console.log('Agregando tarea: ' + tarea);
+                listadoCardsToDo.appendChild(divToDo);
+                cursor.continue();
 
             }
 
@@ -69,10 +65,10 @@ export default class UI{
 
     }   
 
-    limpiarHTML(){
-        while(contenedorToDos.firstChild){
-            contenedorToDos.removeChild(contenedorToDos.firstChild);
-        }
-    }
+    // limpiarHTML(){
+    //     while(listadoCardsToDo.firstChild){
+    //         listadoCardsToDo.removeChild(listadoCardsToDo.firstChild);
+    //     }
+    // }
 
 }

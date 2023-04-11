@@ -1,5 +1,6 @@
 // Lista todos
 export const contenedorToDos = document.querySelector('#todos');
+export const listadoCardsToDo = document.querySelector('#lista-cards-todo');
 
 // Formulario
 export const formulario = document.querySelector('#formulario');
