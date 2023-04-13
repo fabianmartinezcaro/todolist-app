@@ -148,51 +148,76 @@ body{
 
 /* TEST */
 
-#todo{
+.todo{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    width: auto;
-    height: 50px;
-    margin-top: 30px;
+    width: 500px;
+    height: auto;
+    margin-top: 15px;
 
     border: 1px solid #8c8c8c;
 }
 
-#todo-check{
+.todo-check{
     width: 20px;
     height: 20px;
 }
 
 .info-todo{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
-#nombreToDo{
+.nombreToDo{
     padding-bottom: 5px;
 }
 
 .info-todo-tiempo{
     display: flex;
-    border-top: 1px solid #8c8c8c;
-    padding-top: 5px;
-    color: #8c8c8c;
+    background-color: #1a1a1a;
+    padding: 8px;
+    color: #eeee;
     font-size: 15px;
-    display: flex;
     flex-direction: row;
 }
 
-.info-todo-tiempo p{
+.horaInicio{
+    color: #00cc99;
     padding-right: 5px;
 }
 
-#todo-delete{
+.horaTermino{
+    color: #ff6666;
+}
+
+.todo-delete{
     background-color: #ff3333;
     text-decoration: none;
     color: white;
-    padding: 5px 15px;
+    padding: 8px 15px;
     margin-right: 20px;
 }
+
+.todo-delete:hover{
+    transition: 0.3s;
+    background-color: #cc0000;
+    text-decoration: none;
+    color: white;
+    padding: 8px 15px; 
+    margin-right: 20px;
+}
+
+.alertaVacio{
+    
+    display: flex;
+    justify-content: center;
+    margin-top: 75px;
+
+    font-size: 20px;
+    color: #8c8c8c;
+
+}
+

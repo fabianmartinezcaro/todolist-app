@@ -1,4 +1,4 @@
-import { inputToDo, formulario, inputHoraInicio, inputHoraTermino } from "./selectores.js";
+import { formulario } from "./selectores.js";
 import UI from './classes/UI.js';
 import Tarea from './classes/Tarea.js';
 
@@ -21,7 +21,6 @@ export function verificarDatos(evento){
 
 export function agregarToDo(evento){
     evento.preventDefault();
-    console.log('Se ha llamado')
 
     const {todo, horaInicio, horaTermino} = objetoTarea;
 
@@ -33,21 +32,45 @@ export function agregarToDo(evento){
     objetoTarea.id = Date.now();
     tarea.nuevoToDo({...objetoTarea});
 
+    const transaction = DB.transaction(['todos'], 'readwrite')
+    const objectStore = transaction.objectStore('todos');
+
+    objectStore.add(objetoTarea)
+
     ui.mostrarToDo();
-    console.log('se ha guardado')
+    formulario.reset();
     ui.mostrarAlerta(formulario, 'Se ha agregado una tarea!', 'correcto');
 }
 
-export function eliminarToDo(){
+export function eliminarToDo(id){
+
+    ui.limpiarHTML();
+
+    const transaction = DB.transaction(['todos'], 'readwrite');
+    const objectStore = transaction.objectStore('todos');
+
+    tarea.borrarToDo(objetoTarea);
+
+    objectStore.delete(id)
+
+    transaction.oncomplete = () => {
+        console.log('Se ha borrado correctamente!');
+        ui.mostrarToDo();
+    }
+
+    transaction.onerror = () => [
+        console.log('Hubo un error!')
+    ]
+
 }
 
-function reiniciarObjeto(){
+// function reiniciarObjeto(){
 
-    objetoTarea.todo = '';
-    objetoTarea.horaInicio = '';
-    objetoTarea.horaTermino = '';
+//     objetoTarea.todo = '';
+//     objetoTarea.horaInicio = '';
+//     objetoTarea.horaTermino = '';
     
-}
+// }
 
 export function crearDB(){
     const todoDB = window.indexedDB.open('todoDB', 1);
